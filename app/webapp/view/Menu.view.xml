@@ -1,0 +1,25 @@
+<mvc:View 
+controllerName="manager.app.controller.Menu" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m">
+
+    <Page showHeader="true" title="Menu" titleAlignment="Center" >
+        <content >
+            <VBox width="100%" >
+             <Image src="images/logo_tr.png" width="100%" height="100%" />
+                <List >
+                    <items>
+                        <StandardListItem  title = "Relátorios" press="onNavRelatorio" type = "Navigation" icon = "sap-icon://manager-insight"/>
+                     </items>
+                     <items>
+                        <StandardListItem title = "Gerenciar Equipes" press="onNavGerenciar" type = "Navigation" icon = "sap-icon://manager"/>
+                     </items>
+                     <items>
+                        <StandardListItem title = "Teste" press="onNavTeste"  type = "Navigation" icon = "sap-icon://overview-chart"/>
+                     </items>
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,47 @@
+<mvc:View xmlns:control="sap.gantt.control"
+    controllerName="manager.app.controller.Listar"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	
+	<Page showHeader="true" title="Listar" titleAlignment="Center">
+       <content>
+            <Table id="tablePlataformas" items="{path: 'Employee>/'}">
+                <headerToolbar>
+                    <OverflowToolbar >
+                        <content>
+                            <Title text="Funcionários" level="H2" />
+                            <ToolbarSpacer ></ToolbarSpacer>
+                            <SearchField placeholder="Digite o CPF do funcionário" width="50%" liveChange="onSearch" ></SearchField>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Nome" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Setor" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Idade" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Pontos" design="Bold"></Label>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{Employee>firstname}"></Text>
+                            <Text text="{Employee>department/name}"></Text>
+                            <Text text="{Employee>birthDate}"></Text>
+                            <Text text="{Employee>score}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+       </content>
+    </Page>
+</mvc:View>

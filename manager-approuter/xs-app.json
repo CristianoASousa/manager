@@ -1,0 +1,18 @@
+{
+    "welcomeFile": "app/index.html",
+    "authenticationMethod": "none",
+    "routes": [
+        {
+            "source": "^/api/(.*)$",
+            "target": "$1",
+            "destination": "desafioFinal",
+            "csrfProtection": false
+        },
+        {
+            "source": "^/app(.*)$",
+            "target": "$1",
+            "authenticationType": "none",
+            "localDir": "app"
+        }
+    ]
+}

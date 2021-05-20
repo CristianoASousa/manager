@@ -1,0 +1,53 @@
+<mvc:View
+    controllerName="manager.app.controller.Relatorio"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	<Page showHeader="true" title="Relátorios" titleAlignment="Center">
+        <content>
+            <Title text="Valores Gerais:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+                <ToolbarSpacer ></ToolbarSpacer>
+            <!--Cards de quantidade total-->
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionarios"  press="press" width="25%">
+		        <TileContent unit="Unit" footer="Footer Text">
+			        <NumericContent value="10"  withMargin="false" />
+		        </TileContent>
+	        </GenericTile>                         
+	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios em home office"  press="press">
+		        <TileContent unit="Unit" footer="Footer Text">
+			        <NumericContent value="12" withMargin="false" />
+		        </TileContent>
+	        </GenericTile>
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios Contaminados "  press="press">
+		        <TileContent unit="Unit" footer="Footer Text">
+			        <NumericContent value="25" withMargin="false" />
+		        </TileContent>
+	        </GenericTile>
+             <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Casos ativos "  press="press">
+		        <TileContent unit="Unit" footer="Footer Text">
+			        <NumericContent value="25" withMargin="false" />
+		        </TileContent>
+	        </GenericTile>
+            <!--Cards de quantidade por setor-->
+            <ToolbarSpacer ></ToolbarSpacer>
+             <Title text="Casos por setor:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+             <ToolbarSpacer ></ToolbarSpacer>     
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Recursos Humanos"  press="press" width="25%">
+		        <TileContent unit="Unit" footer="Footer Text">
+			        <NumericContent value="10"  withMargin="false" />
+		        </TileContent>
+	        </GenericTile>                          
+	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Financeiro"  press="press">
+		        <TileContent unit="Unit" footer="Footer Text">
+			        <NumericContent value="12" withMargin="false" />
+		        </TileContent>
+	        </GenericTile>
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos "  press="press">
+		        <TileContent unit="Unit" footer="Footer Text">
+			        <NumericContent value="25" withMargin="false" />
+		        </TileContent>
+	        </GenericTile>
+        </content>
+    </Page>		
+</mvc:View>

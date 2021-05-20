@@ -1,0 +1,57 @@
+_schema-version: "3.2"
+ID: manager
+version: 0.0.1
+modules:
+- name: manager-approuter
+  type: approuter.nodejs
+  path: manager-approuter
+  requires:
+  - name: manager_html_repo_runtime
+  - name: dest_manager
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: manager_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: manager_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - app-content.zip
+      name: app
+      target-path: resources/
+- name: app
+  type: html5
+  path: app
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+resources:
+- name: manager_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: manager_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: dest_manager
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install
+
