@@ -8,7 +8,7 @@
         {
             "source": "^/api/(.*)$",
             "target": "$1",
-            "destination": "desafioFinal",
+            "destination": "api-house",
             "csrfProtection": false
         },
         {
