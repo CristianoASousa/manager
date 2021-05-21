@@ -1,0 +1,98 @@
+{
+    "resources": [
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "controller/Relatorio.controller.js"
+        },
+        {
+            "name": "controller/Menu.controller.js"
+        },
+        {
+            "name": "controller/Listar.controller.js"
+        },
+        {
+            "name": "controller/Gerenciar.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "controller/Listar-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Relatorio-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Menu-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Gerenciar-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BaseController-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../sap-ui-version.json"
+        },
+        {
+            "name": "view/Relatorio.view.xml"
+        },
+        {
+            "name": "view/Menu.view.xml"
+        },
+        {
+            "name": "view/Listar.view.xml"
+        },
+        {
+            "name": "view/Gerenciar.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "images/logo_tr.png"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "index.html"
+        }
+    ]
+}

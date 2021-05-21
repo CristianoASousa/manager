@@ -1,0 +1,72 @@
+<mvc:View
+    controllerName="manager.app.controller.Gerenciar"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	<Page showHeader="true" title="Gerenciar Equipes" titleAlignment="Center">
+        <content>
+            <Title text="Totais:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+                <ToolbarSpacer ></ToolbarSpacer>
+
+                <!--Card de quantidades de funcionários-->
+                 	<GenericTag text="Funcionários"  design="StatusIconHidden" status="Warning"  class=" sapUiTinyMarginBegin sapUiSmallMarginBottom">
+					    <ObjectNumber state="None" emphasized="true" number="{Total>/total}"  />
+				    </GenericTag>
+
+                    <GenericTag text="Recursos Humanos"  design="StatusIconHidden" status="Warning"  class=" sapUiTinyMarginBegin sapUiSmallMarginBottom">
+					    <ObjectNumber state="None" emphasized="true" number="{Total>/Recursos Humanos}"  />
+				    </GenericTag>
+
+                    <GenericTag text="Financeiro"  design="StatusIconHidden" status="Warning"  class=" sapUiTinyMarginBegin sapUiSmallMarginBottom">
+					    <ObjectNumber state="None" emphasized="true" number="{Total>/Financeiro}"  />
+				    </GenericTag>
+
+                    <GenericTag text="Projetos"  design="StatusIconHidden" status="Warning"  class=" sapUiTinyMarginBegin sapUiSmallMarginBottom">
+					    <ObjectNumber state="None" emphasized="true" number="{Total>/Projetos}"  />
+				    </GenericTag>
+
+                    <ToolbarSpacer ></ToolbarSpacer>
+                    <Title text="Escolha a porcentagem:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+                    <ToolbarSpacer ></ToolbarSpacer>
+
+                    <!--Slide de escolha de porcentagem -->
+            	    <Slider value="50" width="90%" min="0" max="100" showAdvancedTooltip="true" showHandleTooltip="false" class="sapUiMediumMarginBottom" liveChange="onChange"/>
+                    <ToolbarSpacer ></ToolbarSpacer> 
+
+                    <!--Cards de quantidade de funcionarios depois de alterados--> 
+
+                        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios" subheader="Totais" press="press">
+		                    <TileContent unit="Unit" footer="Footer Text">
+			                    <NumericContent value="{Total>/totalPercent}"  withMargin="false" />
+		                    </TileContent>
+	                    </GenericTile>
+
+                        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios" subheader="Recursos Humanos" press="press">
+		                    <TileContent unit="Unit" footer="Footer Text">
+			                    <NumericContent value="{Total>/rhPercent}"  withMargin="false" />
+		                    </TileContent>
+	                    </GenericTile>
+
+	                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios" subheader="Financeiro" press="press">
+		                    <TileContent unit="Unit" footer="Footer Text">
+			                    <NumericContent value="{Total>/financialPercent}" withMargin="false" />
+		                    </TileContent>
+	                    </GenericTile>
+
+                        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios" subheader="Projetos" press="press">
+		                    <TileContent unit="Unit" footer="Footer Text">
+			                    <NumericContent value="{Total>/projectsPercent}" withMargin="false" />
+		                    </TileContent>
+	                    </GenericTile>
+
+        </content>
+        <footer>
+			<OverflowToolbar>
+				
+				<Button icon = "sap-icon://activity-individual" text="Gerar lista" type="Emphasized" press="onNavListar" />
+                <ToolbarSpacer/>
+			</OverflowToolbar>
+		</footer>
+    </Page>		
+</mvc:View>

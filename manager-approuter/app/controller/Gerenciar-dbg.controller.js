@@ -49,22 +49,12 @@ sap.ui.define([
                 var rh = that.getView().getModel("Total").getProperty("/Recursos Humanos");
                 var financial = that.getView().getModel("Total").getProperty("/Financeiro");
                 var projects = that.getView().getModel("Total").getProperty("/Projetos");
-                var total = that.getView().getModel("Total").getProperty("/total");
 
                 var rhPercent = Math.round(rh * (value / 100));
                 var financialPercent = Math.round(financial * (value / 100));
                 var projectsPercent = Math.round(projects * (value / 100));
                 var totalPercent = rhPercent + financialPercent + projectsPercent;
 
-                var totalPresential = total - totalPercent;
-                var projectsPresential = projects - projectsPercent;
-                var financialPresential = financial - financialPercent;
-                var rhPresential = rh - rhPercent;
-
-                that.getView().getModel("Total").setProperty("/financialPresential", financialPresential)
-                that.getView().getModel("Total").setProperty("/projectsPresential", projectsPresential)
-                that.getView().getModel("Total").setProperty("/rhPresential", rhPresential)
-                that.getView().getModel("Total").setProperty("/totalPresential", totalPresential)
                 that.getView().getModel("Total").setProperty("/totalPercent", totalPercent)
                 that.getView().getModel("Total").setProperty("/rhPercent", rhPercent)
                 that.getView().getModel("Total").setProperty("/projectsPercent", projectsPercent)

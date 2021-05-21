@@ -11,8 +11,9 @@
                 <headerToolbar>
                     <OverflowToolbar >
                         <content>
-                            <Title text="Funcionários em home office" level="H2" />
+                            <Title text="Funcionários" level="H2" />
                             <ToolbarSpacer ></ToolbarSpacer>
+                            <SearchField placeholder="Digite o CPF do funcionário" width="50%" liveChange="onSearch" ></SearchField>
                         </content>
                     </OverflowToolbar>
                 </headerToolbar>
@@ -42,11 +43,5 @@
                 </items>
             </Table>
        </content>
-       <footer>
-			<OverflowToolbar>
-                <ToolbarSpacer/>
-				<Button icon = "sap-icon://activity-individual" text="Concluir" type="Emphasized" press="onNavListar" />
-			</OverflowToolbar>
-		</footer>
     </Page>
 </mvc:View>
