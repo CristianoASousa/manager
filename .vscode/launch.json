@@ -18,7 +18,7 @@
         "MOCK_LOOKUP_DIRS": "[\"webapp\"]",
         "run.config": "{\"handlerId\":\"ui5_run_config_handler_id\",\"runnableId\":\"/home/user/projects/manager/app\"}"
       },
-      "envFile": "${workspaceFolder}/app/.env1",
+      "envFile": "${workspaceFolder}/app/.env2",
       "preLaunchTask": "Build manager"
     }
   ]
