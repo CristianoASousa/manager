@@ -7,7 +7,7 @@
 	
 	<Page showHeader="true" title="Listar" titleAlignment="Center">
        <content>
-            <Table id="tablePlataformas" items="{path: 'Employee>/'}">
+            <Table id="tableListar" items="{path: 'Employee>/'}">
                 <headerToolbar>
                     <OverflowToolbar >
                         <content>
@@ -42,11 +42,5 @@
                 </items>
             </Table>
        </content>
-       <footer>
-			<OverflowToolbar>
-                <ToolbarSpacer/>
-				<Button icon = "sap-icon://activity-individual" text="Concluir" type="Emphasized" press="onNavListar" />
-			</OverflowToolbar>
-		</footer>
     </Page>
 </mvc:View>

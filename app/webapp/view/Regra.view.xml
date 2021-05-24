@@ -1,0 +1,31 @@
+<mvc:View
+    controllerName="manager.app.controller.Regra"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+   
+>
+    <Page showHeader="true" title="Regras" titleAlignment="Center">
+        <content>
+       <Title class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" id="WrappingTitle" wrapping="true" text="Sistema de pontuação, a pontuação vai de 0 a 100, sendo que ao se aproximar de 100 a pessoa estará mais apta ao regime de trabalho remoto." />
+        <Table items="{/regras}" autoPopinMode="true">
+		    <columns>
+			    <Column>
+				    <Text text="Situação" />
+			    </Column>
+			    <Column>
+				    <Text text="Pontuação" />
+			    </Column>
+		        </columns>
+		    <items>
+			    <ColumnListItem>
+				    <cells>
+					    <Text text="{situacao}" />
+					    <ExpandableText class="sapUiTinyMarginBottom sapUiTinyMarginTop" text="{pontuacao}" overflowMode="{overflowMode}" />
+				    </cells>
+			    </ColumnListItem>
+		    </items>
+	    </Table>
+        </content>
+	</Page>
+</mvc:View>

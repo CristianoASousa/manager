@@ -1,0 +1,51 @@
+<mvc:View xmlns:control="sap.gantt.control"
+    controllerName="manager.app.controller.Listagem"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	
+	<Page showHeader="true" title="Listagem" titleAlignment="Center">
+       <content>
+            <Table mode="Delete" id="tableListagem" delete="onExcluir" items="{path: 'Employee>/'}">
+                <columns>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Nome" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Departamento" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Idade" design="Bold"></Label>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Status COVID" design="Bold"></Label>
+                        	<ObjectStatus
+			                    class="sapUiSmallMarginBottom"
+			                    text="{= ${Employee>Status} === 'A' ? 'Ativo' : 'Inativo'}"
+			                    inverted="true"
+			                    icon="sap-icon://message-success"
+			                    state="{= ${Employee>status} === 'A' ? 'Success' : 'Error'}" />
+                    </Column>
+                     <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Vacinado" design="Bold"></Label>
+                    </Column>
+                     <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Pontos" design="Bold"></Label>
+                    </Column>
+
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{Employee>firstname}"></Text>
+                            <Text text="{Employee>department/name}"></Text>
+                            <Text text="{Employee>birthDate}"></Text>
+                            <Text text="{Employee>score}"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+       </content>
+    </Page>
+</mvc:View>
