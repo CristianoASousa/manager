@@ -21,14 +21,16 @@ sap.ui.define([
                     "url": "/api/main/Employees?$expand=department",
                     "method": "GET",
                     success(data) {
-
                         var total = data.value.length
                         var listaFinal = data.value.reduce((lista, curr) => {
-                            if (curr.department.name in lista) {
-                                lista[curr.department.name]++;
-                            }
-                            else {
-                                lista[curr.department.name] = 1;
+                            if(curr.department != null) {
+                                if (curr.department.name in lista) {
+                                    lista[curr.department.name]++;
+                                }
+                                else {
+                                    lista[curr.department.name] = 1;
+                                }
+                                return lista
                             }
                             return lista
                         }, {})
@@ -43,6 +45,7 @@ sap.ui.define([
             },
 
             onChange: function (oEvent) {
+                
                 var that = this;
                 var value = oEvent.getSource().mProperties.value;
 
@@ -69,6 +72,7 @@ sap.ui.define([
                 that.getView().getModel("Total").setProperty("/rhPercent", rhPercent)
                 that.getView().getModel("Total").setProperty("/projectsPercent", projectsPercent)
                 that.getView().getModel("Total").setProperty("/financialPercent", financialPercent)
+                
             },
 
             onNavListar: function(){

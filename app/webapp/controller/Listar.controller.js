@@ -1,11 +1,12 @@
 sap.ui.define([
     "./BaseController",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageBox"
 ],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (BaseController, JSONModel) {
+	function (BaseController, JSONModel, MessageBox) {
 		"use strict";
 
 		return BaseController.extend("manager.app.controller.Listar", {
@@ -40,12 +41,40 @@ sap.ui.define([
             // Buscando a lista dos funcionários por setor
             getListBySector: async function (sSector, sTop) {
                 var data = await $.ajax({
-                    "url": `/api/main/Employees?$top=${sTop}&$expand=department&$filter=department/name eq '${sSector}'&$orderby=score desc`,
+                    "url": `/api/main/Employees?$top=${sTop}&$expand=department&$filter=department/name eq '${sSector}' and activeCase eq false&$orderby=score desc`,
                     "method": "GET"})
                 if (data) {
                     return data.value
                 }
                 return null
+            },
+
+            // função para salvar a lista de funcionários em home office
+            onConfirm: async function () {
+                var that = this;
+                var employees = this.getModel('Employee').getData();
+                employees.forEach( (emp, index) => employees[index].inHomeOffice = true );
+                var data = JSON.stringify({employees})
+
+                await $.ajax({
+                    "url": "/api/main/generateHomeOfficeList",
+                    "method": "POST",
+                    "data": data,
+                    contentType: 'application/json',
+                    success() {
+                        MessageBox.success("Operação realizada com sucesso", {
+                            onClose: function(){
+                                that.getRouter().navTo("Relatorio");
+                            }
+                        });  
+                    },
+                    error() {
+                        MessageBox.error("Um erro ocorreu, tente novamente")
+                    }
+                })
+                
             }
+
+
 		});
 	});

@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.0.1",
   "devDependencies": {
-    "@sap/ui5-builder-webide-extension": "1.0.x",
+    "@sap/ui5-builder-webide-extension": "^1.1.5",
     "@sapui5/ts-types": "1.71.x",
     "@ui5/cli": "2.2.6",
     "bestzip": "^2.1.4",
@@ -17,5 +17,6 @@
     "dependencies": [
       "@sap/ui5-builder-webide-extension"
     ]
-  }
+  },
+  "dependencies": {}
 }

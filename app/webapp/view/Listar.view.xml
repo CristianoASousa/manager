@@ -7,11 +7,11 @@
 	
 	<Page showHeader="true" title="Listar" titleAlignment="Center">
        <content>
-            <Table id="tablePlataformas" items="{path: 'Employee>/'}">
+            <Table id="tablePlataformas" growingScrollToLoad="true" growing="true" items="{path: 'Employee>/'}">
                 <headerToolbar>
                     <OverflowToolbar >
                         <content>
-                            <Title text="Funcionários em home office" level="H2" />
+                            <Title text="Lista de funcionários para o home office" level="H2" />
                             <ToolbarSpacer ></ToolbarSpacer>
                         </content>
                     </OverflowToolbar>
@@ -23,9 +23,7 @@
                     <Column demandPopin="true" minScreenWidth="Desktop">
                         <Label wrapping="true" text="Setor" design="Bold"></Label>
                     </Column>
-                    <Column demandPopin="true" minScreenWidth="Desktop">
-                        <Label wrapping="true" text="Idade" design="Bold"></Label>
-                    </Column>
+                    
                     <Column demandPopin="true" minScreenWidth="Desktop">
                         <Label wrapping="true" text="Pontos" design="Bold"></Label>
                     </Column>
@@ -33,9 +31,8 @@
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Text text="{Employee>firstname}"></Text>
+                            <Text text="{Employee>name}"></Text>
                             <Text text="{Employee>department/name}"></Text>
-                            <Text text="{Employee>birthDate}"></Text>
                             <Text text="{Employee>score}"></Text>
                         </cells>
                     </ColumnListItem>
@@ -45,7 +42,7 @@
        <footer>
 			<OverflowToolbar>
                 <ToolbarSpacer/>
-				<Button icon = "sap-icon://activity-individual" text="Concluir" type="Emphasized" press="onNavListar" />
+				<Button icon = "sap-icon://activity-individual" text="Concluir" type="Emphasized" press="onConfirm" />
 			</OverflowToolbar>
 		</footer>
     </Page>

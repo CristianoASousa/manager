@@ -2,7 +2,7 @@
     controllerName="manager.app.controller.Relatorio"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
-  xmlns:microchart="sap.suite.ui.microchart"
+    xmlns:microchart="sap.suite.ui.microchart"
     xmlns="sap.m"
    
     
@@ -12,45 +12,58 @@
             <Title text="Valores Gerais:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
                 <ToolbarSpacer ></ToolbarSpacer>
             <!--Cards de quantidade total-->
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionarios"  press="press" >
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionarios totais"  press="press" >
 		        <TileContent>
-			        <NumericContent value="200" valueColor="Good"  withMargin="false" />
+			        <NumericContent value="{Reports>/totalsEmp}" valueColor="Good"  withMargin="false" />
 		        </TileContent>
 	        </GenericTile>  
 	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios em home office"  press="press">
 		        <TileContent>
-			        <NumericContent value="12" withMargin="false" />
+			        <NumericContent value="{Reports>/inHomeOffice}" valueColor="Good" withMargin="false" />
 		        </TileContent>
 	        </GenericTile>
             <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios Contaminados "  press="press">
 		        <TileContent>
-			        <NumericContent value="25" withMargin="false" />
+			        <NumericContent value="{Reports>/gotCOVID}" valueColor="Error" withMargin="false" />
 		        </TileContent>
 	        </GenericTile>
              <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Casos ativos "  press="press">
 		        <TileContent>
-			        <NumericContent value="25" withMargin="false" />
+			        <NumericContent value="{Reports>/activeCase}" valueColor="Error" withMargin="false" />
 		        </TileContent>
 	        </GenericTile>
             <!--Cards de quantidade por setor-->
             <ToolbarSpacer ></ToolbarSpacer>
              <Title text="Casos por setor:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
              <ToolbarSpacer ></ToolbarSpacer>     
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Recursos Humanos"  press="press" >
-		        <TileContent>
-			        <NumericContent value="10"  withMargin="false" />
-		        </TileContent>
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Recursos Humanos"  press="press" frameType="TwoByOne" >
+                <tileContent>
+
+                    <TileContent>
+                        <content>
+                            <NumericContent value="{Reports>/rh}"  withMargin="false" />
+                        </content>
+                    </TileContent> 
+
+                    <TileContent>
+                        <content>
+                            <microchart:RadialMicroChart size="M" percentage="42" valueColor="Neutral"/>
+                        </content>
+                    </TileContent>
+
+                </tileContent>
 	        </GenericTile>                          
 	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Financeiro"  press="press">
 		        <TileContent>
-			        <NumericContent value="12" withMargin="false" />
+			        <NumericContent value="{Reports>/financial}" withMargin="false" />
 		        </TileContent>
 	        </GenericTile>
             <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos "  press="press">
 		        <TileContent>
-			        <NumericContent value="25" withMargin="false" />
+			        <NumericContent value="{Reports>/projects}" withMargin="false" />
 		        </TileContent>
 	        </GenericTile>
+
         </content>
     </Page>		
 </mvc:View>
