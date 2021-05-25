@@ -53,9 +53,12 @@ sap.ui.define([
             onConfirm: async function () {
                 var that = this;
                 var employees = this.getModel('Employee').getData();
-                employees.forEach( (emp, index) => employees[index].inHomeOffice = true );
-                var data = JSON.stringify({employees})
 
+                //employees.forEach( (emp, index) => employees[index].inHomeOffice = true );
+
+                console.log(employees)
+                var data = JSON.stringify({employees})
+                /*
                 await $.ajax({
                     "url": "/api/main/generateHomeOfficeList",
                     "method": "POST",
@@ -72,6 +75,7 @@ sap.ui.define([
                         MessageBox.error("Um erro ocorreu, tente novamente")
                     }
                 })
+                */
                 
             }
 

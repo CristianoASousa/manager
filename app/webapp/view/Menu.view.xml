@@ -9,11 +9,20 @@ xmlns="sap.m">
         <content >
             <VBox width="100%" >
              <Image src="images/logo_tr.png" width="100%" height="100%" />
-                <tnt:NavigationList >
-                    <tnt:NavigationListItem  text = "Relátorios" select="onNavRelatorio" icon = "sap-icon://manager-insight"/>
-                    <tnt:NavigationListItem text = "Gerenciar Equipes" select="onNavGerenciar" icon = "sap-icon://manager"/>
-                    <tnt:NavigationListItem text = "Teste" select="onNavTeste" icon = "sap-icon://overview-chart"/>
-                </tnt:NavigationList>
+                <List >
+                    <items>
+                        <StandardListItem  title = "Relátorios" press="onNavRelatorio" type = "Navigation" icon = "sap-icon://manager-insight"/>
+                     </items>
+                     <items>
+                        <StandardListItem title = "Gerenciar Equipes" press="onNavGerenciar" type = "Navigation" icon = "sap-icon://manager"/>
+                     </items>
+                     <items>
+                        <StandardListItem title = "Regras" press="onNavRegra" type = "Navigation" icon = "sap-icon://approvals"/>
+                     </items>
+                      <!-- <items>
+                        <StandardListItem title = "Listagem" press="onNavListagem" type = "Navigation" icon = "sap-icon://manager"/>
+                    </items> Esse botão esta na pagina relatorios em funcinarios totais -->
+                </List>
             </VBox>
         </content>
     </Page>

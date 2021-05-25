@@ -1,0 +1,13 @@
+<mvc:View   
+    controllerName="manager.app.controller.Listagem"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	
+	<Page showHeader="true" title="Listagem" titleAlignment="Center">
+       <content>
+           
+       </content>
+    </Page>
+</mvc:View>

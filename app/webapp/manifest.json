@@ -104,9 +104,14 @@
                 "target": ["Menu", "Listar"]
                 },
                 {
-                "name": "Teste",
-                "pattern": "Teste",
-                "target": ["Menu", "Teste"]
+                "name": "Regra",
+                "pattern": "Regra",
+                "target": ["Menu", "Regra"]
+                },
+                {
+                "name": "Listagem",
+                "pattern": "Listagem",
+                "target": ["Menu", "Listagem"]
                 }
             ],
             "targets": {
@@ -149,12 +154,20 @@
                     "viewName": "Listar",
                     "controlAggregation": "detailPages"
                 },
-                 "Teste": {
-					"viewType": "XML",
+                "Regra":{
+                    "viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "teste",
-                    "viewName": "Teste",
+					"viewId": "regra",
+                    "viewName": "Regra",
+                    "controlAggregation": "detailPages"
+                },
+                "Listagem":{
+                    "viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "listagem",
+                    "viewName": "Listagem",
                     "controlAggregation": "detailPages"
                 }
             }

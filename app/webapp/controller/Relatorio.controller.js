@@ -85,6 +85,9 @@ sap.ui.define([
                     return 0
                 }
                 
+            },
+            onNav: function() {
+                this.getRouter().navTo("Listagem");
             }
         });
     });
