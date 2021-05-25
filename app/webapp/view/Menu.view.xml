@@ -17,11 +17,11 @@ xmlns="sap.m">
                         <StandardListItem title = "Gerenciar Equipes" press="onNavGerenciar" type = "Navigation" icon = "sap-icon://manager"/>
                      </items>
                      <items>
-                        <StandardListItem title = "Regras" press="onNavRegra" type = "Navigation" icon = "sap-icon://manager"/>
+                        <StandardListItem title = "Regras" press="onNavRegra" type = "Navigation" icon = "sap-icon://approvals"/>
                      </items>
-                      <items>
+                      <!-- <items>
                         <StandardListItem title = "Listagem" press="onNavListagem" type = "Navigation" icon = "sap-icon://manager"/>
-                     </items>
+                    </items> Esse botão esta na pagina relatorios em funcinarios totais -->
                 </List>
             </VBox>
         </content>

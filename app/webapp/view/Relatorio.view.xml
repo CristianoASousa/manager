@@ -9,48 +9,54 @@
 >
 	<Page showHeader="true" title="Relátorios" titleAlignment="Center">
         <content>
-            <Title text="Valores Gerais:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+            <Title text="Valores Gerais:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop "/>
                 <ToolbarSpacer ></ToolbarSpacer>
             <!--Cards de quantidade total-->
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionarios"  press="press" >
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionarios" >
 		        <TileContent>
-			        <NumericContent value="200" valueColor="Good"  withMargin="false" />
+			        <NumericContent value="200" valueColor="Good"  withMargin="false"/>
 		        </TileContent>
 	        </GenericTile>  
 	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios em home office"  press="press">
 		        <TileContent>
-			        <NumericContent value="12" withMargin="false" />
+			        <NumericContent value="12" withMargin="false"  valueColor="Critical" />
 		        </TileContent>
 	        </GenericTile>
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios Contaminados "  press="press">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios Contaminados"  press="press">
 		        <TileContent>
-			        <NumericContent value="25" withMargin="false" />
+			        <NumericContent value="25" withMargin="false" valueColor="Critical"/>
 		        </TileContent>
 	        </GenericTile>
              <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Casos ativos "  press="press">
 		        <TileContent>
-			        <NumericContent value="25" withMargin="false" />
+			        <NumericContent value="25" withMargin="false" valueColor="Critical"/>
 		        </TileContent>
 	        </GenericTile>
             <!--Cards de quantidade por setor-->
             <ToolbarSpacer ></ToolbarSpacer>
-             <Title text="Casos por setor:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+             <Title text="Casos por setor:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop"/>
              <ToolbarSpacer ></ToolbarSpacer>     
             <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Recursos Humanos"  press="press" >
 		        <TileContent>
-			        <NumericContent value="10"  withMargin="false" />
+			        <NumericContent value="10"  withMargin="false" valueColor="Critical"/>
 		        </TileContent>
 	        </GenericTile>                          
 	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Financeiro"  press="press">
 		        <TileContent>
-			        <NumericContent value="12" withMargin="false" />
+			        <NumericContent value="12" withMargin="false" valueColor="Critical"/>
 		        </TileContent>
 	        </GenericTile>
             <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos "  press="press">
 		        <TileContent>
-			        <NumericContent value="25" withMargin="false" />
+			        <NumericContent value="25" withMargin="false" valueColor="Critical"/>
 		        </TileContent>
 	        </GenericTile>
         </content>
+        <footer>
+			<OverflowToolbar>
+                <ToolbarSpacer/>
+				<Button icon = "sap-icon://activity-items" text="Listagem" type="Emphasized" press="onNavListagem" />
+			</OverflowToolbar>
+		</footer>
     </Page>		
 </mvc:View>

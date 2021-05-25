@@ -108,11 +108,10 @@
                 "pattern": "Regra",
                 "target": ["Menu", "Regra"]
                 },
-                ,
                 {
                 "name": "Listagem",
-                "pattern": "listagem",
-                "target": ["Menu", "listagem"]
+                "pattern": "Listagem",
+                "target": ["Menu", "Listagem"]
                 }
             ],
             "targets": {
@@ -163,7 +162,6 @@
                     "viewName": "Regra",
                     "controlAggregation": "detailPages"
                 },
-                ,
                 "Listagem":{
                     "viewType": "XML",
 					"transition": "slide",

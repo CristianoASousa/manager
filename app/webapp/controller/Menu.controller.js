@@ -21,7 +21,7 @@ sap.ui.define([
                 this.getRouter().navTo("Listar");
             },
              onNavListagem: function(){
-                this.getRouter().navTo("Listar");
+                this.getRouter().navTo("Listagem");
             }
             
 	});
