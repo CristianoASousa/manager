@@ -15,36 +15,76 @@ sap.ui.define([
             onInit: function () {
                 this.getRouter().getRoute("Listagem").attachPatternMatched(this.handleRouteMatched, this);
                 
-                var Employee = {
-                    "name": "Iago Baldani",
-                    "email": "iagobaldani@gmail.com",
-                    "department": {
-                        "name": "Projetos"
-                    },
-                    "score": 40,
-                    "inHomeOffice": true
-                };
-
-                this.getView().setModel(new JSONModel(Employee), "Employees");
-
             },
 
             handleRouteMatched: async function(){
                 var that = this; 
+                var idBtn = this.getOwnerComponent().getModel("identif").getData().id;
                 
-                /* this.getView().setBusy(true);
+                switch(idBtn){
+                    case 'container-app---relatorio--totalsEmp':
+                        var Employee = {
+                            "name": "Iago Baldani",
+                            "email": "iagobaldani@gmail.com",
+                            "department": {
+                                "name": "Projetos"
+                            },
+                            "score": 40,
+                            "inHomeOffice": false
+                        };
+                        this.getView().setModel(new JSONModel(Employee), "Employees");
+                        /* 
+                            that.getView().setBusy(true);
 
-                 await $.ajax({
-                    "url":"/api/main/Employees",
-                    "method":"GET",
-                    success(data){
-                        that.getView().setModel(new JSONModel(data), "Employees");
-                        that.getView().setBusy(false);
-                    },
-                    error(){
-                        MessageBox.error("Não foi possível gerar a lista. Tente novamente mais tarde.");
-                    }
-                }); */
+                            await $.ajax({
+                            "url":"/api/main/Employees?$expand=department",
+                            "method":"GET",
+                            success(data){
+                                that.getView().setModel(new JSONModel(data), "Employees");
+                                that.getView().setBusy(false);
+                            },
+                            error(){
+                                MessageBox.error("Não foi possível gerar a lista. Tente novamente mais tarde.");
+                            }
+                        }); */
+                        break;
+                    case 'container-app---relatorio--inHomeOffice':
+                        var Employee = {
+                            "name": "Cristiano",
+                            "email": "cristiano@gmail.com",
+                            "department": {
+                                "name": "Projetos"
+                            },
+                            "score": 60,
+                            "inHomeOffice": true
+                        };
+                        this.getView().setModel(new JSONModel(Employee), "Employees");
+                        break;
+                    case 'container-app---relatorio--gotCOVID':
+                        var Employee = {
+                            "name": "Gustavo",
+                            "email": "gustavo@gmail.com",
+                            "department": {
+                                "name": "Recursos Humanos"
+                            },
+                            "score": 20,
+                            "inHomeOffice": false
+                        };
+                        this.getView().setModel(new JSONModel(Employee), "Employees");
+                        break;
+                    case 'container-app---relatorio--activeCase':
+                        var Employee = {
+                            "name": "Livian",
+                            "email": "livian@gmail.com",
+                            "department": {
+                                "name": "Financeiro"
+                            },
+                            "score": 80,
+                            "inHomeOffice": true
+                        };
+                        this.getView().setModel(new JSONModel(Employee), "Employees");
+                        break;
+                } 
             },
 
             onSearch: function(oEvent){

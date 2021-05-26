@@ -86,8 +86,29 @@ sap.ui.define([
                 }
                 
             },
-            onNav: function() {
-                this.getRouter().navTo("Listagem");
+            onNav: function(oEvent) {
+                var sid = oEvent.getSource().sId;
+                var that = this;
+
+                var oId = {
+                    id: sid
+                }
+                this.getOwnerComponent().setModel(new JSONModel(oId), "identif");
+                
+                switch(sid){
+                    case 'container-app---relatorio--totalsEmp':
+                        that.getRouter().navTo("Listagem");
+                        break;
+                    case 'container-app---relatorio--inHomeOffice':
+                        that.getRouter().navTo("Listagem");
+                        break;
+                    case 'container-app---relatorio--gotCOVID':
+                        that.getRouter().navTo("Listagem");
+                        break;
+                    case 'container-app---relatorio--activeCase':
+                        that.getRouter().navTo("Listagem");
+                        break;
+                } 
             }
         });
     });

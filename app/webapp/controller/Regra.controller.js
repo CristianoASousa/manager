@@ -55,10 +55,10 @@ sap.ui.define([
 						overflowMode: sap.m.ExpandableTextOverflowMode.Popover
                     },
                     {
-						situacao: "Possui ambiente e equipamentos adequados para executar suas funções em home office",
+						situacao: "Possui ambiente e equipamentos adequados para executar suas funções em Home Office",
 						pontuacao: "10 pontos",
 						overflowMode: sap.m.ExpandableTextOverflowMode.Popover
-					}
+                    }
 				]
 			};
 

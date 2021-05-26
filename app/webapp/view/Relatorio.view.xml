@@ -13,25 +13,25 @@
                 <ToolbarSpacer ></ToolbarSpacer>
             <!--Cards de quantidade total-->
             
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionarios totais"  press="onNav" >
+            <GenericTile id="totalsEmp" class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionarios totais"  press="onNav" >
 		        <TileContent>
 			        <NumericContent value="{Reports>/totalsEmp}" valueColor="Good"  withMargin="false" />
 		        </TileContent>
 	        </GenericTile>  
 
-	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios em home office"  press="press">
+	        <GenericTile id="inHomeOffice" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios em home office"  press="onNav">
 		        <TileContent>
 			        <NumericContent value="{Reports>/inHomeOffice}" valueColor="Good" withMargin="false" />
 		        </TileContent>
 	        </GenericTile>
 
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios Contaminados"  press="press">
+            <GenericTile id="gotCOVID" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios Contaminados"  press="onNav">
 		        <TileContent>
 			        <NumericContent value="{Reports>/gotCOVID}" valueColor="Error" withMargin="false" />
 		        </TileContent>
 	        </GenericTile>
 
-             <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Casos ativos "  press="press">
+             <GenericTile id="activeCase" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Casos ativos "  press="onNav">
 		        <TileContent>
 			        <NumericContent value="{Reports>/activeCase}" valueColor="Error" withMargin="false" />
 		        </TileContent>
