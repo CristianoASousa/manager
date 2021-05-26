@@ -1,1 +1,1 @@
-destinations=[{"name":"api-house","url":"https://api_house.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"},{"name":"desafioFinal","url":"https://desafioFinal.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"}]
+destinations=[{"name":"desafioFinal","url":"https://desafioFinal.dest","proxyHost":"http://127.0.0.1","proxyPort":"8887"}]

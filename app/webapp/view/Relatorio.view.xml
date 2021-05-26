@@ -7,7 +7,7 @@
    
     
 >
-	<Page showHeader="true" title="Relátorios" titleAlignment="Center">
+	<Page showHeader="true" title="Relatórios" titleAlignment="Center">
         <content>
             <Title text="Valores Gerais:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop "/>
                 <ToolbarSpacer ></ToolbarSpacer>
@@ -41,48 +41,47 @@
             <ToolbarSpacer ></ToolbarSpacer>
              <Title text="Casos por setor:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop"/>
              <ToolbarSpacer ></ToolbarSpacer>     
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Recursos Humanos"  press="press" frameType="TwoByOne" >
+            <GenericTile  class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Projetos"  press="press" frameType="TwoByOne">
                 <tileContent>
-
                     <TileContent>
                         <content>
-                            <NumericContent value="{Reports>/rh}"  withMargin="false" />
+                            <NumericContent  icon="sap-icon://developer-settings" value="{Reports>/projects}"  withMargin="false" />
                         </content>
                     </TileContent> 
-
                     <TileContent>
                         <content>
-                            <microchart:RadialMicroChart size="M" percentage="42" valueColor="Neutral"/>
+                            <microchart:RadialMicroChart size="M" percentage="{Reports>/projects}" valueColor="{= ${Reports>/projects} > 50 ? Error : Neutral }"/>
                         </content>
                     </TileContent>
-
                 </tileContent>
-	        </GenericTile>                          
-	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Financeiro"  press="press">
-		        <TileContent>
-			        <NumericContent value="{Reports>/financial}" withMargin="false" />
-		        </TileContent>
+	        </GenericTile>  
+
+	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Financeiro"  press="press" frameType="TwoByOne">
+                <tileContent>
+                    <TileContent>
+			            <NumericContent icon="sap-icon://monitor-payments" value="{Reports>/financial}" withMargin="false" />
+		            </TileContent>
+		            <TileContent>
+			            <content>
+                            <microchart:RadialMicroChart size="M" percentage="{Reports>/financial}" valueColor="{= ${Reports>/financial} > 50 ? Error : Neutral }"/>
+                        </content>
+		            </TileContent>
+                </tileContent>
 	        </GenericTile>
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos "  press="press">
-		        <TileContent>
-			        <NumericContent value="{Reports>/projects}" withMargin="false" />
-		        </TileContent>
-	        </GenericTile>
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos "  press="press">
-		        <TileContent>
-			        <NumericContent value="{Reports>/projects}" withMargin="false" />
-		        </TileContent>
-	        </GenericTile>
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos "  press="press">
-		        <TileContent>
-			        <NumericContent value="{Reports>/projects}" withMargin="false" />
-		        </TileContent>
-	        </GenericTile>
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos "  press="press">
-		        <TileContent>
-			        <NumericContent value="{Reports>/projects}" withMargin="false" />
-		        </TileContent>
-	        </GenericTile>
+
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Recursos Humanos"  press="press" frameType="TwoByOne">
+		        <tileContent>
+                    <TileContent>
+                        <NumericContent icon="sap-icon://company-view" value="{Reports>/rh}" withMargin="false" />
+                    </TileContent>
+                    <TileContent>
+                        <content>
+                                <microchart:RadialMicroChart size="M" percentage="{Reports>/rh}" valueColor="{= ${{Reports>/rh} > 50 ? Error : Neutral }"/>
+                            </content>
+                    </TileContent>
+                </tileContent>
+            </GenericTile>   
+
         </content>
     </Page>		
 </mvc:View>

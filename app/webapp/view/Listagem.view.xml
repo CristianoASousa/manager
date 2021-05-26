@@ -7,7 +7,45 @@
 	
 	<Page showHeader="true" title="Listagem" titleAlignment="Center">
        <content>
-           
+           <Table id="tableEmployees" items="{path:'Employees>/'}">
+                <headerToolbar>
+                    <OverflowToolbar >
+                        <content>
+                            <Title text="Funcionários" level="H3"/>
+                            <ToolbarSpacer/>
+                            <SearchField placeholder="Digite o email de um funcionário" width="50%" liveChange="onSearch"/>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Nome" design="Bold"/>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Email" design="Bold"/>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Departamento" design="Bold"/>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Pontos" design="Bold"/>
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop">
+                        <Label wrapping="true" text="Em home office" design="Bold"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{Employees>/name}"/>
+                            <Text text="{Employees>/email}"/>
+                            <Text text="{Employees>/department/name}"/>
+                            <ObjectStatus text="{Employees>/score}" inverted="true" state="{= ${Employees>/score} > 50 ? 'Error' : 'Success'}"/>
+                            <ObjectStatus text="{= ${Employees>/inHomeOffice} ? 'Sim' : 'Não'}" inverted="true" state="{= ${Employees>/inHomeOffice} ? 'Success' : 'Error'}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
        </content>
     </Page>
 </mvc:View>
