@@ -16,32 +16,8 @@ sap.ui.define([
             },
 
             handleRouteMatched: async function () {
-                var that = this;
-                await $.ajax({
-                    "url": "/api/main/Employees?$expand=department",
-                    "method": "GET",
-                    success(data) {
-                        var total = data.value.length
-                        var listaFinal = data.value.reduce((lista, curr) => {
-                            if(curr.department != null) {
-                                if (curr.department.name in lista) {
-                                    lista[curr.department.name]++;
-                                }
-                                else {
-                                    lista[curr.department.name] = 1;
-                                }
-                                return lista
-                            }
-                            return lista
-                        }, {})
-
-                        listaFinal.total = total
-                        that.getOwnerComponent().setModel(new JSONModel(listaFinal), "Total")
-                    },
-                    error() {
-                        console.log("erro")
-                    }
-                })
+                const listaFinal = await this.getTotalsEmployees();
+                this.getOwnerComponent().setModel(new JSONModel(listaFinal), "Total")
             },
 
             onChange: function (oEvent) {

@@ -5,12 +5,10 @@
     xmlns="sap.m"
 >
 	<Page showHeader="true" title="Gerenciar Equipes" titleAlignment="Center">
+        
+			
         <content>
-            <Title text="Totais:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
             <ToolbarSpacer ></ToolbarSpacer>
-            
-            <!--Card de quantidades de funcionários-->
-            
             <GenericTag text="Funcionários"  design="StatusIconHidden" status="Warning"  class=" sapUiTinyMarginBegin sapUiSmallMarginBottom">
                 <ObjectNumber state="None" emphasized="true" number="{Total>/total}"  />
             </GenericTag>
@@ -26,67 +24,76 @@
             <GenericTag text="Projetos"  design="StatusIconHidden" status="Warning"  class=" sapUiTinyMarginBegin sapUiSmallMarginBottom">
                 <ObjectNumber state="None" emphasized="true" number="{Total>/Projetos}"  />
             </GenericTag>
+            <ToolbarSpacer ></ToolbarSpacer>
+             
+            
+            <!--Card de quantidades de funcionários-->
+            
 
-            <ToolbarSpacer ></ToolbarSpacer>
-            <Title text="Escolha a porcentagem:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
-            <ToolbarSpacer ></ToolbarSpacer>
+            <Toolbar>
+                <Title text="Escolha a porcentagem de funcionários que devem compor a lista de home office:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+            </Toolbar>
 
             <!--Slide de escolha de porcentagem -->
             <Slider value="50" width="90%" min="0" max="100" showAdvancedTooltip="true" showHandleTooltip="false" class="sapUiMediumMarginBottom" liveChange="onChange"/>
             <ToolbarSpacer ></ToolbarSpacer> 
 
             <!--Cards de quantidade de funcionarios depois de alterados--> 
-            <Title text="Funcionários em home office:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+            <Toolbar >
+                <Title text="Funcionários em home office:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+            </Toolbar>
             <ToolbarSpacer ></ToolbarSpacer>
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Totais">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Total" frameType="OneByHalf">
                 <TileContent>
-                    <NumericContent value="{Total>/totalPercent}"  withMargin="false" />
+                    <NumericContent  icon="sap-icon://employee" value="{Total>/totalPercent}"  withMargin="false" />
                 </TileContent>
             </GenericTile>
 
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Recursos Humanos">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" frameType="OneByHalf" header="Recursos Humanos">
                 <TileContent>
-                    <NumericContent value="{Total>/rhPercent}"  withMargin="false" />
+                    <NumericContent icon="sap-icon://company-view" value="{Total>/rhPercent}"  withMargin="false" />
                 </TileContent>
             </GenericTile>
 
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Financeiro">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" frameType="OneByHalf" header="Financeiro">
                 <TileContent>
-                    <NumericContent value="{Total>/financialPercent}" withMargin="false" />
+                    <NumericContent icon="sap-icon://monitor-payments" value="{Total>/financialPercent}" withMargin="false" />
                 </TileContent>
             </GenericTile>
 
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" frameType="OneByHalf" header="Projetos">
                 <TileContent>
-                    <NumericContent value="{Total>/projectsPercent}" withMargin="false" />
+                    <NumericContent icon="sap-icon://developer-settings" value="{Total>/projectsPercent}" withMargin="false" />
                 </TileContent>
             </GenericTile>
             <ToolbarSeparator ></ToolbarSeparator>
 
             <!--Cards de quantidade de funcionarios em trabalho local--> 
-            <Title text="Funcionários em regime presencial:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+            <Toolbar >
+                <Title text="Funcionários em regime presencial:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop " />
+            </Toolbar>
             <ToolbarSpacer ></ToolbarSpacer>
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Totais">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" frameType="OneByHalf" header="Total">
                 <TileContent >
-                    <NumericContent value="{Total>/totalPresential}"  withMargin="false" />
+                    <NumericContent  icon="sap-icon://employee" value="{Total>/totalPresential}"  withMargin="false" />
                 </TileContent>
             </GenericTile>
 
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Recursos Humanos">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" frameType="OneByHalf" header="Recursos Humanos">
                 <TileContent>
-                    <NumericContent value="{Total>/rhPresential}"  withMargin="false" />
+                    <NumericContent icon="sap-icon://company-view" value="{Total>/rhPresential}"  withMargin="false" />
                 </TileContent>
             </GenericTile>
 
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Financeiro">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" frameType="OneByHalf" header="Financeiro">
                 <TileContent>
-                    <NumericContent value="{Total>/financialPresential}" withMargin="false" />
+                    <NumericContent icon="sap-icon://monitor-payments" value="{Total>/financialPresential}" withMargin="false" />
                 </TileContent>
             </GenericTile>
 
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Projetos">
+            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" frameType="OneByHalf" header="Projetos">
                 <TileContent>
-                    <NumericContent value="{Total>/projectsPresential}" withMargin="false" />
+                    <NumericContent icon="sap-icon://developer-settings" value="{Total>/projectsPresential}" withMargin="false" />
                 </TileContent>
             </GenericTile>
             <ToolbarSeparator ></ToolbarSeparator>

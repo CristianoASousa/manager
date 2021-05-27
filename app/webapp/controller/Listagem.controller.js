@@ -13,85 +13,77 @@ sap.ui.define([
 
         return BaseController.extend("manager.app.controller.Listagem", {
             onInit: function () {
-                this.getRouter().getRoute("Listagem").attachPatternMatched(this.handleRouteMatched, this);
+                this.getRouter().getRoute("TotalFuncionarios").attachPatternMatched(this.handleRouteMatchedTotalFun, this);
+                this.getRouter().getRoute("EmHomeOffice").attachPatternMatched(this.handleRouteMatchedFuncHomeOffice, this);
+                this.getRouter().getRoute("CasosPositivos").attachPatternMatched(this.handleRouteMatchedCasosPos, this);
+                this.getRouter().getRoute("CasosAtivos").attachPatternMatched(this.handleRouteMatchedCasosAtivos, this);
                 
+				var oTable = this.byId("tableEmployees");
+				var aSticky = ["ColumnHeaders","HeaderToolbar"];
+
+                oTable.setSticky(aSticky);
             },
 
-            handleRouteMatched: async function(){
-                var that = this; 
-                var idBtn = this.getOwnerComponent().getModel("identif").getData().id;
-                
-                switch(idBtn){
-                    case 'container-app---relatorio--totalsEmp':
-                        var Employee = {
-                            "name": "Iago Baldani",
-                            "email": "iagobaldani@gmail.com",
-                            "department": {
-                                "name": "Projetos"
-                            },
-                            "score": 40,
-                            "inHomeOffice": false
-                        };
-                        this.getView().setModel(new JSONModel(Employee), "Employees");
-                        /* 
-                            that.getView().setBusy(true);
+            handleRouteMatchedFuncHomeOffice: async function(){
+                this.getView().setBusy(true);
+                const employees = await this.handleReq("inHomeOffice");
+                if(employees.length > 0){
+                    this.getView().setModel(new JSONModel(employees), "Employees")
+                }  
+                this.getView().setBusy(false);
+            },
 
-                            await $.ajax({
-                            "url":"/api/main/Employees?$expand=department",
-                            "method":"GET",
-                            success(data){
-                                that.getView().setModel(new JSONModel(data), "Employees");
-                                that.getView().setBusy(false);
-                            },
-                            error(){
-                                MessageBox.error("Não foi possível gerar a lista. Tente novamente mais tarde.");
-                            }
-                        }); */
-                        break;
-                    case 'container-app---relatorio--inHomeOffice':
-                        var Employee = {
-                            "name": "Cristiano",
-                            "email": "cristiano@gmail.com",
-                            "department": {
-                                "name": "Projetos"
-                            },
-                            "score": 60,
-                            "inHomeOffice": true
-                        };
-                        this.getView().setModel(new JSONModel(Employee), "Employees");
-                        break;
-                    case 'container-app---relatorio--gotCOVID':
-                        var Employee = {
-                            "name": "Gustavo",
-                            "email": "gustavo@gmail.com",
-                            "department": {
-                                "name": "Recursos Humanos"
-                            },
-                            "score": 20,
-                            "inHomeOffice": false
-                        };
-                        this.getView().setModel(new JSONModel(Employee), "Employees");
-                        break;
-                    case 'container-app---relatorio--activeCase':
-                        var Employee = {
-                            "name": "Livian",
-                            "email": "livian@gmail.com",
-                            "department": {
-                                "name": "Financeiro"
-                            },
-                            "score": 80,
-                            "inHomeOffice": true
-                        };
-                        this.getView().setModel(new JSONModel(Employee), "Employees");
-                        break;
-                } 
+            handleRouteMatchedTotalFun: async function() {
+                var that = this
+                this.getView().setBusy(true);
+                await $.ajax({
+                    "url": "/api/main/Employees",
+                    "method": "GET",
+                    success(data){
+                        that.getView().setModel(new JSONModel(data.value), "Employees")
+                    },
+                    error(){
+                        MessageBox.error("Não foi possível buscar os dados")
+                    }
+                })
+                this.getView().setBusy(false);
+            },
+
+            handleRouteMatchedCasosPos: async function() {
+                this.getView().setBusy(true);
+                const employees = await this.handleReq("gotCOVID");
+                if(employees.length > 0){
+                    this.getView().setModel(new JSONModel(employees), "Employees")
+                }  
+                this.getView().setBusy(false);
+            },
+
+            handleRouteMatchedCasosAtivos: async function() {
+                this.getView().setBusy(true);
+                const employees = await this.handleReq("activeCase");
+                if(employees.length > 0){
+                    this.getView().setModel(new JSONModel(employees), "Employees")
+                }  
+                this.getView().setBusy(false);
+            },
+
+            handleReq: async function(sParms) {
+                try {
+                    const data = await $.ajax({
+                        "url":`/api/main/Employees?$expand=department&$filter=${sParms} eq true`,
+                        "method": "GET"
+                    })
+                    return data.value
+                } catch (error) {
+                    return []
+                }
             },
 
             onSearch: function(oEvent){
                 var aFilters = [];
                 var sQuery = oEvent.getSource().getValue();
                 if (sQuery && sQuery.length > 0) {
-                    var filter = new Filter("email", FilterOperator.Contains, sQuery);
+                    var filter = new Filter("name", FilterOperator.Contains, sQuery);
                     aFilters.push(filter);
                 }
 

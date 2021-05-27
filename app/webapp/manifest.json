@@ -109,8 +109,23 @@
                 "target": ["Menu", "Regra"]
                 },
                 {
-                "name": "Listagem",
-                "pattern": "Listagem",
+                "name": "EmHomeOffice",
+                "pattern": "EmHomeOffice",
+                "target": ["Menu", "Listagem"]
+                },
+                {
+                "name": "TotalFuncionarios",
+                "pattern": "TotalFuncionarios",
+                "target": ["Menu", "Listagem"]
+                },
+                {
+                "name": "CasosAtivos",
+                "pattern": "CasosAtivos",
+                "target": ["Menu", "Listagem"]
+                },
+                {
+                "name": "CasosPositivos",
+                "pattern": "CasosPositivos",
                 "target": ["Menu", "Listagem"]
                 }
             ],

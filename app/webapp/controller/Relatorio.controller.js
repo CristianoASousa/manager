@@ -30,6 +30,19 @@ sap.ui.define([
 
                 const totalsEmp = await this.handleRequestsTotals("emp");
 
+                var totais = await this.getTotalsEmployees();
+               
+                Object.keys(totais).forEach(key => {
+                    if(key == "Recursos Humanos"){
+                        totais.RecursosHumanos = totais[key]
+                        delete totais[key]
+                    }
+                });
+
+                var perContProjetos = (projects / totais.Projetos) * 100;
+                var perContRh = (rh / totais.RecursosHumanos) * 100;
+                var perContFin = (financial / totais.Financeiro) * 100;
+               
                 const totals = {
                     projects,
                     rh,
@@ -37,12 +50,15 @@ sap.ui.define([
                     activeCase,
                     gotCOVID,
                     inHomeOffice,
-                    totalsEmp
+                    totalsEmp,
+                    perContProjetos,
+                    perContRh,
+                    perContFin,
+                    totais
                 }
 
                 this.getOwnerComponent().setModel(new JSONModel(totals), "Reports")
-
-
+                
                 this.getView().setBusy(false);
             },
 
@@ -87,26 +103,21 @@ sap.ui.define([
                 
             },
             onNav: function(oEvent) {
-                var sid = oEvent.getSource().sId;
                 var that = this;
-
-                var oId = {
-                    id: sid
-                }
-                this.getOwnerComponent().setModel(new JSONModel(oId), "identif");
+                var sId = oEvent.getSource().sId;
                 
-                switch(sid){
+                switch(sId){
                     case 'container-app---relatorio--totalsEmp':
-                        that.getRouter().navTo("Listagem");
+                        that.getRouter().navTo("TotalFuncionarios");
                         break;
                     case 'container-app---relatorio--inHomeOffice':
-                        that.getRouter().navTo("Listagem");
+                        that.getRouter().navTo("EmHomeOffice");
                         break;
                     case 'container-app---relatorio--gotCOVID':
-                        that.getRouter().navTo("Listagem");
+                        that.getRouter().navTo("CasosPositivos");
                         break;
                     case 'container-app---relatorio--activeCase':
-                        that.getRouter().navTo("Listagem");
+                        that.getRouter().navTo("CasosAtivos");
                         break;
                 } 
             }

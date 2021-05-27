@@ -7,12 +7,13 @@
 	
 	<Page showHeader="true" title="Listar" titleAlignment="Center">
        <content>
-            <Table id="tablePlataformas" growingScrollToLoad="true" growing="true" items="{path: 'Employee>/'}">
+            <Table id="tableListar" growingScrollToLoad="true" growing="true" items="{path: 'Employee>/'}">
                 <headerToolbar>
                     <OverflowToolbar >
                         <content>
                             <Title text="Lista de funcionários para o home office" level="H2" />
                             <ToolbarSpacer ></ToolbarSpacer>
+                            <SearchField placeholder="Digite o nome de um funcionário" width="50%" liveChange="onSearch"/>
                         </content>
                     </OverflowToolbar>
                 </headerToolbar>
@@ -33,7 +34,7 @@
                         <cells>
                             <Text text="{Employee>name}"></Text>
                             <Text text="{Employee>department/name}"></Text>
-                            <Text text="{Employee>score}"></Text>
+                            <ObjectStatus text="{Employee>score}" inverted="true" state="{= ${Employee>score} > 50 ? 'Success' : 'Error'}"/>
                         </cells>
                     </ColumnListItem>
                 </items>

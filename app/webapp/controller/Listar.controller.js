@@ -1,18 +1,24 @@
 sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
 ],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (BaseController, JSONModel, MessageBox) {
+	function (BaseController, JSONModel, MessageBox, Filter, FilterOperator) {
 		"use strict";
 
 		return BaseController.extend("manager.app.controller.Listar", {
 
             onInit: function () {
                 this.getRouter().getRoute("Listar").attachPatternMatched(this.handleRouteMatched, this);
+                var oTable = this.byId("tableListar");
+				var aSticky = ["ColumnHeaders","HeaderToolbar"];
+
+                oTable.setSticky(aSticky);
             },
 
 			handleRouteMatched: async function () {
@@ -71,6 +77,19 @@ sap.ui.define([
                         MessageBox.error("Um erro ocorreu, tente novamente")
                     }
                 })
+            },
+
+            onSearch: function(oEvent){
+                var aFilters = [];
+                var sQuery = oEvent.getSource().getValue();
+                if (sQuery && sQuery.length > 0) {
+                    var filter = new Filter("name", FilterOperator.Contains, sQuery);
+                    aFilters.push(filter);
+                }
+
+                var oList = this.byId("tableListar");
+                var oBinding = oList.getBinding("items");
+                oBinding.filter(aFilters, "Application");
             }
 		});
 	});

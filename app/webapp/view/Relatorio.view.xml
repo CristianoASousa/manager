@@ -1,5 +1,6 @@
-<mvc:View xmlns:layout="sap.ui.layout"
+<mvc:View xmlns:l="sap.ui.layout"
     controllerName="manager.app.controller.Relatorio"
+    xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns:microchart="sap.suite.ui.microchart"
@@ -7,81 +8,105 @@
    
     
 >
-	<Page showHeader="true" title="Relatórios" titleAlignment="Center">
-        <content>
-            <Title text="Valores Gerais:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop "/>
-                <ToolbarSpacer ></ToolbarSpacer>
-            <!--Cards de quantidade total-->
-            
-            <GenericTile id="totalsEmp" class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionarios totais"  press="onNav" >
-		        <TileContent>
-			        <NumericContent value="{Reports>/totalsEmp}" valueColor="Good"  withMargin="false" />
-		        </TileContent>
-	        </GenericTile>  
+<Page showHeader="true" title="Relatórios" titleAlignment="Center">
+    <content >
+        <Toolbar height="3rem">
+            <Title text="Visão geral" />
+        </Toolbar>
+		
+        <GenericTile id="totalsEmp" class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Funcionários totais"  press="onNav" >
+            <TileContent>
+                <NumericContent icon="sap-icon://employee" value="{Reports>/totalsEmp}" valueColor="Good"  withMargin="false" />
+            </TileContent>
+        </GenericTile>  
 
-	        <GenericTile id="inHomeOffice" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios em home office"  press="onNav">
-		        <TileContent>
-			        <NumericContent value="{Reports>/inHomeOffice}" valueColor="Good" withMargin="false" />
-		        </TileContent>
-	        </GenericTile>
+        <GenericTile id="inHomeOffice" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionários em home office"  press="onNav">
+            <TileContent>
+                <NumericContent icon="sap-icon://offsite-work" value="{Reports>/inHomeOffice}" valueColor="Good" withMargin="false" />
+            </TileContent>
+        </GenericTile>
 
-            <GenericTile id="gotCOVID" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionarios Contaminados"  press="onNav">
-		        <TileContent>
-			        <NumericContent value="{Reports>/gotCOVID}" valueColor="Error" withMargin="false" />
-		        </TileContent>
-	        </GenericTile>
+        <GenericTile id="gotCOVID" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Funcionários Contaminados"  press="onNav">
+            <TileContent>
+                <NumericContent icon="sap-icon://wounds-doc" value="{Reports>/gotCOVID}" valueColor="Error" withMargin="false" />
+            </TileContent>
+        </GenericTile>
 
-             <GenericTile id="activeCase" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Casos ativos "  press="onNav">
-		        <TileContent>
-			        <NumericContent value="{Reports>/activeCase}" valueColor="Error" withMargin="false" />
-		        </TileContent>
-	        </GenericTile>
+        <GenericTile id="activeCase" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Casos ativos "  press="onNav">
+            <TileContent>
+                <NumericContent icon="sap-icon://nurse" value="{Reports>/activeCase}" valueColor="Error" withMargin="false" />
+            </TileContent>
+        </GenericTile> 
+        <FlexBox width="50rem" height="15rem" alignItems="Center" class="sapUiSmallMargin">
+            <items>
+                <microchart:InteractiveLineChart 
+                    selectionChanged="selectionChanged" press="press" precedingPoint="15"
+                    succeedingPoint="89">
+                    <microchart:points>
+                        <microchart:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+                        <microchart:InteractiveLineChartPoint value="12" label="June"/>
+                        <microchart:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+                        <microchart:InteractiveLineChartPoint value="52" label="Aug"/>
+                        <microchart:InteractiveLineChartPoint value="69.9" label="Sep"/>
+                        <microchart:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+                    </microchart:points>
+                </microchart:InteractiveLineChart>
+            </items>
+        </FlexBox>        
+        <Toolbar height="4rem">
+            <Title level="H1" text="Visão setorial" />
+        </Toolbar>        
+        <GenericTile  
+            class="sapUiTinyMarginBegin sapUiTinyMarginTop " 
+            header="Projetos"  press="press" frameType="TwoByOne"
+            subheader="Total de funcionários: {Reports>/totais/Projetos}" >
+            <tileContent>
+                <TileContent>
+                    <content>
+                        <NumericContent  icon="sap-icon://developer-settings" value="{Reports>/projects}"  withMargin="false" />
+                    </content>
+                </TileContent> 
+                <TileContent>
+                    <content>
+                        <microchart:RadialMicroChart size="M" percentage="{Reports>/perContProjetos}" valueColor="{= ${Reports>/perContProjetos} > 50 ? 'Error' : 'Critical'}"/>
+                    </content>
+                </TileContent>
+            </tileContent>
+        </GenericTile>  
 
-            <!--Cards de quantidade por setor-->
-            <ToolbarSpacer ></ToolbarSpacer>
-             <Title text="Casos por setor:" level="H3" class="sapUiTinyMarginBegin sapUiTinyMarginTop"/>
-             <ToolbarSpacer ></ToolbarSpacer>     
-            <GenericTile  class="sapUiTinyMarginBegin sapUiTinyMarginTop " header="Projetos"  press="press" frameType="TwoByOne">
-                <tileContent>
-                    <TileContent>
-                        <content>
-                            <NumericContent  icon="sap-icon://developer-settings" value="{Reports>/projects}"  withMargin="false" />
+        <GenericTile 
+            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+            header="Financeiro"  press="press" frameType="TwoByOne"
+            subheader="Total de funcionários: {Reports>/totais/Financeiro}">
+            <tileContent>
+                <TileContent>
+                    <NumericContent icon="sap-icon://monitor-payments" value="{Reports>/financial}" withMargin="false" />
+                </TileContent>
+                <TileContent>
+                    <content>
+                        <microchart:RadialMicroChart size="M" percentage="{Reports>/perContFin}" valueColor="{= ${Reports>/perContFin} > 50 ? 'Error' : 'Critical'}"/>
+                    </content>
+                </TileContent>
+            </tileContent>
+        </GenericTile>
+
+        <GenericTile 
+            class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+            header="Recursos Humanos"  press="press" frameType="TwoByOne"
+            subheader="Total de funcionários: {Reports>/totais/RecursosHumanos}">
+            <tileContent>
+                <TileContent>
+                    <NumericContent icon="sap-icon://company-view" value="{Reports>/rh}" withMargin="false" />
+                </TileContent>
+                <TileContent>
+                    <content>
+                            <microchart:RadialMicroChart size="M" percentage="{Reports>/perContRh}" valueColor="{= ${Reports>/perContRh} > 50 ? 'Error' : 'Critical'}"/>
                         </content>
-                    </TileContent> 
-                    <TileContent>
-                        <content>
-                            <microchart:RadialMicroChart size="M" percentage="{Reports>/projects}" valueColor="{= ${Reports>/projects} > 50 ? Error : Neutral }"/>
-                        </content>
-                    </TileContent>
-                </tileContent>
-	        </GenericTile>  
+                </TileContent>
+            </tileContent>
+        </GenericTile>  
+                
+    </content>
+</Page>		
 
-	        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Financeiro"  press="press" frameType="TwoByOne">
-                <tileContent>
-                    <TileContent>
-			            <NumericContent icon="sap-icon://monitor-payments" value="{Reports>/financial}" withMargin="false" />
-		            </TileContent>
-		            <TileContent>
-			            <content>
-                            <microchart:RadialMicroChart size="M" percentage="{Reports>/financial}" valueColor="{= ${Reports>/financial} > 50 ? Error : Neutral }"/>
-                        </content>
-		            </TileContent>
-                </tileContent>
-	        </GenericTile>
-
-            <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Recursos Humanos"  press="press" frameType="TwoByOne">
-		        <tileContent>
-                    <TileContent>
-                        <NumericContent icon="sap-icon://company-view" value="{Reports>/rh}" withMargin="false" />
-                    </TileContent>
-                    <TileContent>
-                        <content>
-                                <microchart:RadialMicroChart size="M" percentage="{Reports>/rh}" valueColor="{= ${{Reports>/rh} > 50 ? Error : Neutral }"/>
-                            </content>
-                    </TileContent>
-                </tileContent>
-            </GenericTile>   
-
-        </content>
-    </Page>		
 </mvc:View>
