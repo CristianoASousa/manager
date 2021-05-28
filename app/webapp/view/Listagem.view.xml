@@ -5,7 +5,8 @@
     xmlns="sap.m"
 >
 	
-	<Page showHeader="true" title="Listagem" titleAlignment="Center">
+	<Page showHeader="true" title="Listagem" titleAlignment="Center" showNavButton="true"
+		navButtonPress="onNavBack">
        <content>
            <Table id="tableEmployees" growingScrollToLoad="true" growing="true" items="{path:'Employees>/'}">
                 <headerToolbar>

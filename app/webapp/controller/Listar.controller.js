@@ -20,6 +20,9 @@ sap.ui.define([
 
                 oTable.setSticky(aSticky);
             },
+            onNavBack: function () {
+                this.getRouter().navTo("Gerenciar")
+            },
 
 			handleRouteMatched: async function () {
 

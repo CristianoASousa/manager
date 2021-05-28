@@ -17,33 +17,49 @@ sap.ui.define([
 
             handleRouteMatched: async function () {
                 this.getView().setBusy(true);
-
+                // casos totais
                 const activeCase = await this.handleRequestsTotals("activeCase");
-                
                 const gotCOVID = await this.handleRequestsTotals("gotCOVID");
-               
                 const inHomeOffice = await this.handleRequestsTotals("inHomeOffice");
-                
+
+                // totais por setor
                 const projects = await this.handleRequestsSector("Projetos");
                 const rh = await this.handleRequestsSector("Recursos Humanos");
                 const financial = await this.handleRequestsSector("Financeiro");
-
+                // total de funcionários na empresa
                 const totalsEmp = await this.handleRequestsTotals("emp");
 
+                // total por setor
                 var totais = await this.getTotalsEmployees();
-               
+
                 Object.keys(totais).forEach(key => {
-                    if(key == "Recursos Humanos"){
+                    if (key == "Recursos Humanos") {
                         totais.RecursosHumanos = totais[key]
                         delete totais[key]
                     }
                 });
+                // porcentagem funcionários contaminados
+                const perGotCovid = Math.round((gotCOVID / totalsEmp) * 100);
+                // porcentagem funcionários com caso ativo
+                const perActiveCase = Math.round((activeCase / totalsEmp) * 100);
 
+                // em home office por setor
+                const projetosInHomeOffice = await this.hadleInHomeOfficeBySector("Projetos");
+                const financeiroInHomeOffice = await this.hadleInHomeOfficeBySector("Financeiro");
+                const rhInHomeOffice = await this.hadleInHomeOfficeBySector("Recursos Humanos");
+                const perInHomeOffice = Math.round((inHomeOffice / totalsEmp) * 100);
+                // porcentagem por setor
                 var perContProjetos = (projects / totais.Projetos) * 100;
                 var perContRh = (rh / totais.RecursosHumanos) * 100;
                 var perContFin = (financial / totais.Financeiro) * 100;
-               
+
                 const totals = {
+                    perActiveCase,
+                    perGotCovid,
+                    perInHomeOffice,
+                    projetosInHomeOffice,
+                    financeiroInHomeOffice,
+                    rhInHomeOffice,
                     projects,
                     rh,
                     financial,
@@ -58,8 +74,20 @@ sap.ui.define([
                 }
 
                 this.getOwnerComponent().setModel(new JSONModel(totals), "Reports")
-                
+
                 this.getView().setBusy(false);
+            },
+
+            hadleInHomeOfficeBySector: async function (sSector) {
+                try {
+                    const data = await $.ajax({
+                        "url": `/api/main/Employees?$expand=department&$filter=department/name eq '${sSector}' and inHomeOffice eq true`,
+                        "method": "GET"
+                    })
+                    return data.value.length
+                } catch (error) {
+                    return 0
+                }
             },
 
             handleRequestsTotals: async function (parms) {
@@ -89,7 +117,7 @@ sap.ui.define([
             },
 
             handleRequestsSector: async function (sector) {
-                
+
                 try {
                     var data = await $.ajax({
                         "url": `/api/main/Employees?$expand=department&$filter=department/name eq '${sector}' and activeCase eq true`,
@@ -100,13 +128,13 @@ sap.ui.define([
                 } catch (error) {
                     return 0
                 }
-                
+
             },
-            onNav: function(oEvent) {
+            onNav: function (oEvent) {
                 var that = this;
                 var sId = oEvent.getSource().sId;
-                
-                switch(sId){
+
+                switch (sId) {
                     case 'container-app---relatorio--totalsEmp':
                         that.getRouter().navTo("TotalFuncionarios");
                         break;
@@ -119,7 +147,7 @@ sap.ui.define([
                     case 'container-app---relatorio--activeCase':
                         that.getRouter().navTo("CasosAtivos");
                         break;
-                } 
+                }
             }
         });
     });
